@@ -1,12 +1,9 @@
 const pactum = require('pactum');
-const pjr = require('pactum-json-reporter');
+const { reporter } = pactum;
 const assert = require('assert');
 const jr = require('../src/index');
 
 describe('Reporter', () => {
-  beforeAll('reporter start', () => {
-    reporter.add(pjr);
-  });
 
   it('spec passes', async () => {
     await pactum.spec()
@@ -43,8 +40,6 @@ describe('Reporter', () => {
 
   after(() => {
     jr.reset();
-    request.removeDefaultHeaders();
-    reporter.end();
   });
 
 });
